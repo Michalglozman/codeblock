@@ -12,7 +12,10 @@ const saveData = async (req, res) => {
 
     block.code = code;
     await block.save();
-    if (block.answer == code) {
+    const trimAnswer= block.answer.trim();
+    const trimCode = code.trim();
+    
+    if (trimAnswer == trimCode) {
       return res.status(200).json({ message: 'Code saved successfully' });
     }
     else {
