@@ -5,8 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 
-
-const getCard = (title,guildLines) => (
+const getCard = (title, guildLines) => (
   <CardContent>
     <Typography variant="h4" component="div" gutterBottom>
       {title}
@@ -14,19 +13,19 @@ const getCard = (title,guildLines) => (
     <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="body2">
       <br />
 
-       <div class="truncate-to-2-lines"> {guildLines}</div>
-      <br/>
+      <div className="truncate-to-2-lines"> {guildLines}</div>
+      <br />
       <b>Click to learn more</b>
     </Typography>
   </CardContent>
 );
 
-export default function OutlinedCard({ title, guildLines }) {
-    return (
-      <Box sx={{ minWidth: 275, p: 2 ,marginBottom : -2}}>
-        <Card variant="outlined" sx={{ borderRadius: 5, p: 3 }}>
-          {getCard(title, guildLines)}
-        </Card>
-      </Box>
-    );
-  }
+export default function OutlinedCard({ title, guildLines, answer }) {
+  return (
+    <Box sx={{ minWidth: 275, p: 2, marginBottom: -2 }}>
+      <Card variant="outlined" sx={{ borderRadius: 5, p: 3 }}>
+        {getCard(title, guildLines, answer)}
+      </Card>
+    </Box>
+  );
+}
