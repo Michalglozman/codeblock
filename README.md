@@ -33,5 +33,5 @@ Client - vercel.com
 Server Render.com
 
 ## Installation
-1. npm installr
+1. npm install
 2. npm start (server & client)
