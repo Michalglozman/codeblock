@@ -1,6 +1,24 @@
 
-const { BlockList } = require('net');
 const blocksList = require('../Model/codeBlock')
+
+const saveData = async (req, res) => {
+  const { id, code } = req.body;
+
+  try {
+      const block = await blocksList.findById(id);
+      if (!block) {
+          return res.status(404).json({ error: 'Block not found' });
+      }
+
+      block.code = code; 
+      await block.save();
+
+      return res.status(200).json({ message: 'Code saved successfully' });
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Server error' });
+  }
+};
 
 
 const getCodeBlocks = async(req, res) => {
@@ -38,4 +56,4 @@ const getCodeBlocks = async(req, res) => {
   }
 
   
-module.exports={getCodeBlocks, getCodeBlockData, handleJoinRoom};
+module.exports={getCodeBlocks, getCodeBlockData, handleJoinRoom, saveData};
